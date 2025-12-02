@@ -62,9 +62,9 @@ Siswa mengisi kehadiran PKL setiap hari sebagai bukti absensi.
 ---
 
 ## 🛠 Teknologi yang Digunakan
+- PHP (main)
 - HTML
 - CSS
-- PHP 
 - MySQL  
 - Bootstrap  
 
