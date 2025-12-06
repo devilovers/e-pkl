@@ -1,7 +1,6 @@
 <?php
 ob_start();
 
-// --- Proses CRUD (AJAX) ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
     $status = "error"; 
@@ -49,14 +48,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // --- Kembalikan JSON ---
     while (ob_get_level()) { ob_end_clean(); }
     header("Content-Type: application/json; charset=utf-8");
     echo json_encode(["status" => $status, "message" => $message]);
     exit;
 }
 
-// --- Ambil data untuk tampilan (GET) ---
 $data = [];
 $res = $koneksi->query("SELECT * FROM catatan_kegiatan WHERE siswa_id=".$_SESSION['id']." ORDER BY tanggal DESC");
 while ($row = $res->fetch_assoc()) {
@@ -126,7 +123,6 @@ form input, form textarea { width:100%; padding:8px; margin-top:5px; border:1px 
     <button style="background:green;" onclick="openCetakModal()">📄 Cetak PDF</button>
 </div>
 
-<!-- Modal Cetak -->
 <div class="modal" id="cetakModal" aria-hidden="true">
   <div class="modal-content">
     <h3>Pilih Rentang Tanggal</h3>
@@ -152,7 +148,6 @@ function closeCetakModal(){
 }
 </script>
 
-<!-- Modal Form -->
 <div class="modal" id="formModal" aria-hidden="true">
   <div class="modal-content">
     <h3 id="modalTitle">Tambah Catatan</h3>
@@ -187,11 +182,11 @@ $(document).ready(function() {
         responsive: {
             details: {
                 type: 'column',
-                target: 'tr'  // klik baris untuk buka detail
+                target: 'tr'  
             }
         },
         columnDefs: [
-            { className: 'dtr-control', orderable: false, targets: 0 } // tanda arrow di kolom No
+            { className: 'dtr-control', orderable: false, targets: 0 } 
         ],
         order: [1, 'asc'],
         language: {
@@ -228,7 +223,6 @@ function closeModal(){
     $("#formModal").hide().attr("aria-hidden","true");
 }
 
-// Util: kirim AJAX JSON
 function postJSON(dataObj, onSuccess){
     $.ajax({
         url: window.location.href,
@@ -245,7 +239,6 @@ function postJSON(dataObj, onSuccess){
     });
 }
 
-// Simpan (add/edit)
 function saveData(){
     const payload = $("#catatanForm").serialize();
     postJSON(payload, function(res){
@@ -258,7 +251,6 @@ function saveData(){
     });
 }
 
-// Hapus
 function deleteData(id){
     Swal.fire({
         title: "Yakin ingin menghapus?",
@@ -281,7 +273,6 @@ function deleteData(id){
     });
 }
 
-// Reload table
 function reloadTable(){
     $.ajax({
         url: window.location.href,
