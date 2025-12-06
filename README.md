@@ -1,4 +1,4 @@
-# *e-pkl V1 – Jurnal Kegiatan Siswa PKL*
+# 📑 e-pkl V1 – Jurnal Kegiatan Siswa PKL
 Website sederhana untuk mengelola dan mencatat kegiatan Praktik Kerja Lapangan (PKL) siswa secara digital.
 
 ---
