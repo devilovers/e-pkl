@@ -2,7 +2,6 @@
 $penilai_id = $_SESSION['id'] ?? null;
 $data_du_list = [];
 
-// ----------------- HANDLE AJAX UPDATE -----------------
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action']=='update') {
 
     $id   = $_POST['id'] ?? null;
@@ -16,17 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         $stmt->bind_param("ssi", $catatan_instruktur, $paraf_pembimbing, $id);
 
         if ($stmt->execute()) {
-          //  echo "OK";
         } else {
-        //    echo "ERROR";
         }
     } else {
-       // echo "ERROR";
     }
-    //exit; // stop agar HTML tidak ikut tercetak
 }
-
-// ----------------- SELECT DATA -----------------
 
     $sql = "SELECT * 
             FROM catatan_kegiatan ck
@@ -78,7 +71,6 @@ th {
     font-weight: 600;
 }
 tr:hover { background: #f0f7ff; cursor: pointer; }
-/* Modal */
 .modal {
     display:none; position:fixed; z-index:1000;
     left:0; top:0; width:100%; height:100%;
@@ -149,7 +141,6 @@ button {
     </tbody>
 </table>
 
-<!-- Modal -->
 <div class="modal" id="dataModal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -297,7 +288,6 @@ function saveData(){
                 setTimeout(()=>location.reload(), 800);
                  location.reload(); 
             } else {
-              //  Swal.fire("Gagal", "Update gagal", "error");
                closeModal();
                 location.reload(); 
             }
