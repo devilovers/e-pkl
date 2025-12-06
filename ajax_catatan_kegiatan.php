@@ -54,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Bersihkan output buffer agar tidak ada HTML yang keluar
 while (ob_get_level()) ob_end_clean();
 echo json_encode($response);
 exit;
