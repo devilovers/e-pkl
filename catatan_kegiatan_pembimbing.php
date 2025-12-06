@@ -4,7 +4,6 @@ session_start();
 $penilai_id = $_SESSION['id'] ?? null;
 if (!$penilai_id) die("Sesi tidak ditemukan");
 
-// ====================== TEMPAT PKL ======================
 $stmt = $koneksi->prepare("
     SELECT tp.pkl_id, tp.pkl_nama
     FROM data_du du
@@ -78,7 +77,6 @@ button{padding:8px 14px;border:none;border-radius:5px;cursor:pointer;}
   </table>
 </div>
 
-<!-- Modal Penilaian -->
 <div class="modal hidden" id="modalEdit">
   <div class="card" style="max-width:600px;margin:auto;">
     <h3>Edit Catatan</h3>
@@ -101,7 +99,6 @@ let tSiswa = $('#tblSiswa').DataTable();
 let tCatatan = $('#tblCatatan').DataTable();
 let ctx;
 
-// ======================= EVENT PILIH TEMPAT =======================
 $('#tblTempat tbody').on('click','tr',function(){
     let pkl_id = $(this).data('id');
     $.post('ajax_get_siswa.php',{pkl_id},function(res){
@@ -113,7 +110,6 @@ $('#tblTempat tbody').on('click','tr',function(){
     },'json');
 });
 
-// ======================= EVENT PILIH SISWA =======================
 $('#tblSiswa tbody').on('click','tr',function(){
     let siswa_id = $(this).data('id');
     $.post('ajax_get_catatan.php',{siswa_id},function(res){
@@ -129,7 +125,6 @@ $('#tblSiswa tbody').on('click','tr',function(){
     },'json');
 });
 
-// === Signature pad ===
 function initCanvas(){
   let canvas=document.getElementById("signaturePad");
   ctx=canvas.getContext("2d"); ctx.lineWidth=2; ctx.strokeStyle="#000";
