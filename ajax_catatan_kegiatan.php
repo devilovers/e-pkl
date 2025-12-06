@@ -9,7 +9,6 @@ $response = ["status"=>"error", "message"=>"Terjadi kesalahan", "data"=>[]];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
 
-    // --- Ambil daftar siswa berdasarkan DU/DI ---
     if ($action === "get_siswa") {
         $pkl_id = $_POST['pkl_id'] ?? 0;
         $pembimbing = $_SESSION['id'] ?? 0;
@@ -29,8 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         $response = ["status"=>"success", "message"=>"Data siswa berhasil diambil", "data"=>$data];
     }
-
-    // --- Ambil catatan kegiatan siswa ---
+        
     elseif ($action === "get_catatan") {
         $siswa_id = $_POST['siswa_id'] ?? 0;
 
