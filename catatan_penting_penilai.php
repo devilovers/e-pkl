@@ -34,7 +34,6 @@ if ($penilai_id) {
     th { background: #f3f4f6; }
     tr:hover { background: #f0f7ff; cursor: pointer; }
 
-    /* Modal */
     .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
              background: rgba(0,0,0,0.4); justify-content: center; align-items: center; padding: 20px; }
     .modal-content { background: white; padding: 28px 25px; border-radius: 10px; max-width: 600px; width: 95%; }
@@ -74,8 +73,6 @@ if ($penilai_id) {
     </div>
 <?php endif; ?>
 
-<!-- Modal -->
-<!-- Modal -->
 <div class="modal" id="dataModal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -120,7 +117,6 @@ function openModal(data) {
         <p><b>NIS :</b> ${data.datawal_nis_nip}</p>
     `;
 
-    // ambil catatan lama via ajax
     $.post("ambil_catatan.php", { nis: currentNIS }, function(res) {
         $("#pesanInput").val(res.pesan || "");
     }, "json");
