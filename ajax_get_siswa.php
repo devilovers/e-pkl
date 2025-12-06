@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'config.php'; // pastikan koneksi sudah benar
+require_once 'config.php'; 
 
 header('Content-Type: application/json');
 
@@ -12,7 +12,6 @@ try {
 
     $pkl_id = intval($_POST['pkl_id']);
 
-    // ambil daftar siswa berdasarkan tempat PKL
     $stmt = $koneksi->prepare("
         SELECT 
            users.id AS datawal_id_siswa,
