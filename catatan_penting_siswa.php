@@ -27,7 +27,6 @@ if ($penilai_id) {
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<!-- SweetAlert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <style>
@@ -78,7 +77,6 @@ if ($penilai_id) {
     </div>
 <?php endif; ?>
 
-<!-- Modal -->
 <div class="modal" id="dataModal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -137,7 +135,6 @@ function closeModal() {
     document.getElementById('dataModal').style.display = 'none';
 }
 
-// ✅ SweetAlert disamakan dan pesan menyesuaikan hasil response PHP
 function simpanCatatan() {
     let pesan = $("#pesanInput").val();
     let kesan = $("#kesanInput").val();
@@ -147,7 +144,7 @@ function simpanCatatan() {
     $.post("simpan_catatan_siswa.php", 
         { nis: currentNIS, pesan: pesan, kesan: kesan }, 
         function(res) {
-            // console.log(res); // untuk debugging kalau perlu
+            
             if (res.status === "success") {
                 Swal.fire({
                     icon: "success",
